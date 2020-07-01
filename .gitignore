@@ -1,0 +1,6 @@
+.sftp
+.vscode
+divi-child/js
+divi-child/css
+divi-child/functions.php
+node_modules
