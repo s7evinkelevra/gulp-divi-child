@@ -4,3 +4,4 @@ divi-child/js
 divi-child/css
 divi-child/functions.php
 node_modules
+.DS_Store
