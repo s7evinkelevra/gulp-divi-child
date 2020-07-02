@@ -1,6 +1,7 @@
-jQuery(document).ready(function ($) {
+document.addEventListener("DOMContentLoaded", function () {
 
   var c = document.getElementById("c");
+  var headerSection = document.getElementById('header-section');
   var ctx = c.getContext("2d");
   var cH;
   var cW;
@@ -36,30 +37,26 @@ jQuery(document).ready(function ($) {
   }
 
   function addClickListeners() {
-    document.addEventListener("touchstart", handleEvent);
+    //document.addEventListener("touchstart", handleEvent);
     document.addEventListener("mousedown", handleEvent);
   };
 
   function handleEvent(e) {
-    console.log(e.pageX);
-    console.log(e.pageY);
-
-    let canvas = document.getElementById('c');
-    console.log(canvas.height)
-
     if (e.touches) {
       e.preventDefault();
       e = e.touches[0];
     }
+    var {elemX, elemY} = globalToElementSpace(e.pageX, e.pageY, c);
+
     var currentColor = colorPicker.current();
     var nextColor = colorPicker.next();
-    var targetR = calcPageFillRadius(e.pageX, e.pageY);
+    var targetR = calcPageFillRadius(elemX, elemY);
     var rippleSize = Math.min(200, (cW * .4));
     var minCoverDuration = 750;
 
     var pageFill = new Circle({
-      x: e.pageX,
-      y: e.pageY,
+      x: elemX,
+      y: elemY,
       r: 0,
       fill: nextColor
     });
@@ -75,8 +72,8 @@ jQuery(document).ready(function ($) {
     });
 
     var ripple = new Circle({
-      x: e.pageX,
-      y: e.pageY,
+      x: elemX,
+      y: elemY,
       r: 0,
       fill: currentColor,
       stroke: {
@@ -97,8 +94,8 @@ jQuery(document).ready(function ($) {
     var particles = [];
     for (var i = 0; i < 32; i++) {
       var particle = new Circle({
-        x: e.pageX,
-        y: e.pageY,
+        x: elemX,
+        y: elemY,
         fill: currentColor,
         r: anime.random(24, 48)
       })
@@ -164,11 +161,13 @@ jQuery(document).ready(function ($) {
   });
 
   var resizeCanvas = function () {
-    cW = window.innerWidth;
-    cH = window.innerHeight;
-    c.width = cW * devicePixelRatio;
+    cW = headerSection.offsetWidth;
+    cH = headerSection.offsetHeight;
+    c.width = cW;
+    c.height = cH;
+/*     c.width = cW * devicePixelRatio;
     c.height = cH * devicePixelRatio;
-    ctx.scale(devicePixelRatio, devicePixelRatio);
+    ctx.scale(devicePixelRatio, devicePixelRatio); */
   };
 
   (function init() {
@@ -213,5 +212,17 @@ jQuery(document).ready(function ($) {
     fauxClick.pageX = x;
     fauxClick.pageY = y;
     document.dispatchEvent(fauxClick);
+  }
+
+  function globalToElementSpace(x,y, element){
+    var xPosition = 0;
+    var yPosition = 0;
+
+    while (element) {
+      xPosition += (element.offsetLeft - element.scrollLeft + element.clientLeft);
+      yPosition += (element.offsetTop - element.scrollTop + element.clientTop);
+      element = element.offsetParent;
+    }
+    return {elemX: x - xPosition, elemY: y - yPosition}
   }
 });
