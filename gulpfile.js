@@ -1,6 +1,7 @@
 const { src, dest, watch } = require('gulp');
 const gulp = require('gulp')
 const sass = require('gulp-sass');
+const autoprefixer = require('gulp-autoprefixer');
 const minifyCSS = require('gulp-csso');
 const babel = require('gulp-babel');
 const concat = require('gulp-concat');
@@ -45,6 +46,7 @@ function cleanCSS() {
 function css() {
     return src('./sass/*.scss', { sourcemaps: true })
         .pipe(sass())
+        .pipe(autoprefixer())
         .pipe(minifyCSS())
         .pipe(rev())
         .pipe(dest('./divi-child/css/'), { sourcemaps: true })

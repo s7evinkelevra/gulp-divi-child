@@ -5,3 +5,5 @@ divi-child/css
 divi-child/functions.php
 node_modules
 .DS_Store
+desktop.ini
+rev-manifest.json
