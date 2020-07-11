@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
 
   var c = document.getElementById("c");
-  var headerSection = document.getElementById('header-section');
+  var headerSection = document.getElementById('canvas-wrapper');
   var ctx = c.getContext("2d");
   var cH;
   var cW;
@@ -46,6 +46,10 @@ document.addEventListener("DOMContentLoaded", function () {
       e.preventDefault();
       e = e.touches[0];
     }
+
+    // disregard if out of bounds of canvas
+    if (e.pageY > c.scrollHeight){ return false;}
+
     var {elemX, elemY} = globalToElementSpace(e.pageX, e.pageY, c);
 
     var currentColor = colorPicker.current();
