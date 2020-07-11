@@ -11,6 +11,21 @@
   }
 }
 
+/* Weird mobile header stuff */
+/* keeps header from becoming sticky when scrolling */
+@media (max-width: 980px){
+  .et_fixed_nav #main-header, .et_fixed_nav #top-header, .et_non_fixed_nav.et_transparent_nav #main-header, .et_non_fixed_nav.et_transparent_nav #top-header {
+      position: absolute!important;
+  }
+}
+
+/* canvas doesn't extend over padding */
+/* creates white area above canvas */
+/* something weird to do with menus */
+#canvas-wrapper{
+  padding-top: 0px!important;
+}
+
 
 #header-section{
 /*   -webkit-font-smoothing: antialiased;
@@ -21,7 +36,7 @@
   h1 {
     @media all and (max-width:767px) {
       text-align: left;
-      font-size: 8vh;
+      font-size: 7.5vh;
       white-space: normal;
     }
 
@@ -51,4 +66,22 @@
 
 .am-select-service-title:nth-of-type(2){
   display:block!important;
+}
+
+/* custom breakpoint for the mobile menu */
+
+@media screen and (min-width: 285px) {
+    #top-menu {
+        display: block!important;
+    }
+    #et_mobile_nav_menu {
+        display: none!important;
+    }
+}
+
+/* fontawesome menu items */
+.fa-menu-item{
+  color:white;
+  font-size: 2em;
+  padding-left: 20px;
 }
