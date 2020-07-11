@@ -8,7 +8,7 @@ function my_theme_enqueue_styles() {
     //     get_stylesheet_directory_uri() . '/style.css',
     //     array( $parent_style )
     // ); // add version
-    wp_enqueue_style( 'fontawesome-fonts-style', get_stylesheet_directory_uri() . '/css/all.min.css');
+    wp_enqueue_style( 'fontawesome-fonts-style', get_stylesheet_directory_uri() . '/css/all.css');
     wp_enqueue_style( 'main-style', get_stylesheet_directory_uri() . '/css/main.css', array(), '/main.css');
 }
 
