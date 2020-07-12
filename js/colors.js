@@ -58,6 +58,15 @@ document.addEventListener("DOMContentLoaded", function () {
     var rippleSize = Math.min(200, (cW * .4));
     var minCoverDuration = 750;
 
+    // set all buttons to the color of the canvas lul
+    // needs some refinement (which elements/dark with white text color and light elements with white bg and colored text)
+/*     const buttons = document.getElementsByTagName('button');
+    for(let element of buttons){
+      element.style.backgroundColor = nextColor;
+      element.style.borderColor = nextColor;
+      element.style.color = "#fff";
+    }
+ */
     var pageFill = new Circle({
       x: elemX,
       y: elemY,
