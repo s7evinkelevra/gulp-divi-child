@@ -38,8 +38,9 @@
       text-align: left;
       font-size: 7.5vh;
       white-space: normal;
+      /* hyphens: auto; */
     }
-    hyphens: manual;
+    /* hyphens: manual; */
     text-align: center;
     white-space: nowrap;
     user-select: none;

@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-
+  
   var c = document.getElementById("c");
   var headerSection = document.getElementById('canvas-wrapper');
   var ctx = c.getContext("2d");
@@ -205,6 +205,8 @@ document.addEventListener("DOMContentLoaded", function () {
       window.CP.PenTimer.MAX_TIME_IN_LOOP_WO_EXIT = 6000;
     }
     window.addEventListener("resize", resizeCanvas);
+    window.addEventListener("load", resizeCanvas);
+
     addClickListeners();
     if (!!window.location.pathname.match(/fullcpgrid/)) {
       startFauxClicking();
@@ -220,11 +222,9 @@ document.addEventListener("DOMContentLoaded", function () {
     function clearInactiveTimeout() {
       clearTimeout(inactive);
       document.removeEventListener("mousedown", clearInactiveTimeout);
-      document.removeEventListener("touchstart", clearInactiveTimeout);
     }
 
     document.addEventListener("mousedown", clearInactiveTimeout);
-    document.addEventListener("touchstart", clearInactiveTimeout);
   }
 
   function startFauxClicking() {
