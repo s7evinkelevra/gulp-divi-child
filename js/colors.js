@@ -9,6 +9,9 @@ document.addEventListener("DOMContentLoaded", function () {
   var animations = [];
   var circles = [];
 
+  // crappy problems 
+  var firstInteraction = true
+
   var colorPicker = (function () {
     var colors = ["#990000", "#009999", "#4d0e8c"];
     var index = 0;
@@ -49,6 +52,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // disregard if out of bounds of canvas
     if (e.pageY > c.scrollHeight){ return false;}
+
+    // require crappy solutions
+    if(firstInteraction){
+      anime({
+        targets: '.et_pb_fullwidth_header_subhead',
+        opacity: 1,
+        easing: 'linear'
+      });
+      firstInteraction = false;
+    }
 
     var {elemX, elemY} = globalToElementSpace(e.pageX, e.pageY, c);
 
