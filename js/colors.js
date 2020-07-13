@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
   var ctx = c.getContext("2d");
   var cH;
   var cW;
-  var bgColor = "#990000";
+  var bgColor = "#e59500";
   var animations = [];
   var circles = [];
 
@@ -13,7 +13,8 @@ document.addEventListener("DOMContentLoaded", function () {
   var firstInteraction = true
 
   var colorPicker = (function () {
-    var colors = ["#990000", "#009999", "#4d0e8c"];
+    /* var colors = ["#990000", "#009999", "#4d0e8c"]; */
+    var colors = ["#e59500", "#002642", "#840032", "#292a2e"];
     var index = 0;
     function next() {
       index = index++ < colors.length - 1 ? index : 0;
