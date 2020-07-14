@@ -26,7 +26,6 @@
   padding-top: 0px!important;
 }
 
-
 #header-section{
 /*   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; */
@@ -87,6 +86,8 @@
   padding-left: 20px;
 }
 
+/* make subheading translucent when first loading the page */
+/* js animation will fade it in, in sync with the circles animation */
 .et_pb_fullwidth_header_subhead{
   opacity: 0;
 }
