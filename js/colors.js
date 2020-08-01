@@ -212,6 +212,11 @@ document.addEventListener("DOMContentLoaded", function () {
       startFauxClicking();
     }
     handleInactiveUser();
+    
+    // on the presentation site, click every 5 minutes to switch the background
+    if(document.location.pathname === "/prasentation/"){
+      presentationClicking();
+    }
   })();
 
   function handleInactiveUser() {
@@ -232,6 +237,12 @@ document.addEventListener("DOMContentLoaded", function () {
       fauxClick(anime.random(cW * .2, cW * .8), anime.random(cH * .2, cH * .8));
       startFauxClicking();
     }, anime.random(200, 900));
+  }
+
+  function presentationClicking() {
+    setInterval(function() {
+      fauxClick(cW / 2, cH / 2);
+    }, 5*60*1000);
   }
 
   function fauxClick(x, y) {
