@@ -96,3 +96,8 @@
 .et_pb_fullwidth_header_subhead{
   opacity: 0;
 }
+
+/* hide popup box shadow */
+#et-boc .area-outer-wrap[data-da-shadow=yes] [data-da-area]{
+	box-shadow:none!important;
+}
